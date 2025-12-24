@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'octofit_tracker.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'octofit_tracker_db',
+        'NAME': 'octofit_db',
         'ENFORCE_SCHEMA': False,
         'CLIENT': {
             'host': 'mongodb://localhost:27017',
@@ -127,15 +127,20 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+
+
 # CORS settings
-INSTALLED_APPS += [
-    'corsheaders',
-]
-MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
-    *MIDDLEWARE,
-]
 CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_HEADERS = list('*')
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
